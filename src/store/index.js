@@ -9,7 +9,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
 
-    movies: []
+    movies: [],
+    searchTerm: ''
 
 
   },
@@ -19,6 +20,13 @@ const store = new Vuex.Store({
     setMovies(state, movies) {
 
       state.movies = movies
+
+    },
+
+    setSearchTerm(state, { term }) {
+
+      state.searchTerm = term
+
 
     }
 
@@ -39,6 +47,18 @@ const store = new Vuex.Store({
   }
 
  
+
+
+  },
+
+  getters: {
+
+    filteredMovies(state) {
+
+      return state.movies.filter((movie) => movie.title.toLowerCase().includes(state.searchTerm.toLowerCase()));
+
+
+    }
 
 
   }

@@ -25,7 +25,7 @@ export default {
 
     movies() {
 
-      return store.state.movies
+      return store.getters.filteredMovies
 
     }
 
